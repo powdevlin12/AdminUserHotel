@@ -8,6 +8,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Bui Ta Tan Ngoc',
@@ -15,6 +16,7 @@ export const usersData = [
     email: 'pengocxinhgai@gmail.com',
     phoneNumber: '0941332489',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Vo Thi Ngan',
@@ -22,6 +24,7 @@ export const usersData = [
     email: 'phongtorai9a@gmail.com',
     phoneNumber: '094123589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Nguyen Son Ba',
@@ -29,6 +32,7 @@ export const usersData = [
     email: 'son3a@gmail.com',
     phoneNumber: '0123214589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Pham Hong Nghia',
@@ -36,6 +40,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Tran Thu Dat',
@@ -43,6 +48,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Bui Ta Tan Ngoc',
@@ -50,6 +56,7 @@ export const usersData = [
     email: 'pengocxinhgai@gmail.com',
     phoneNumber: '0941332489',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Vo Thi Ngan',
@@ -57,6 +64,7 @@ export const usersData = [
     email: 'phongtorai9a@gmail.com',
     phoneNumber: '094123589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Nguyen Son Ba',
@@ -64,6 +72,7 @@ export const usersData = [
     email: 'son3a@gmail.com',
     phoneNumber: '0123214589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Pham Hong Nghia',
@@ -71,6 +80,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Tran Thu Dat',
@@ -78,6 +88,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Bui Ta Tan Ngoc',
@@ -85,6 +96,7 @@ export const usersData = [
     email: 'pengocxinhgai@gmail.com',
     phoneNumber: '0941332489',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Vo Thi Ngan',
@@ -92,6 +104,7 @@ export const usersData = [
     email: 'phongtorai9a@gmail.com',
     phoneNumber: '094123589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Nguyen Son Ba',
@@ -99,6 +112,7 @@ export const usersData = [
     email: 'son3a@gmail.com',
     phoneNumber: '0123214589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Pham Hong Nghia',
@@ -106,6 +120,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Tran Thu Dat',
@@ -113,6 +128,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Bui Ta Tan Ngoc',
@@ -120,6 +136,7 @@ export const usersData = [
     email: 'pengocxinhgai@gmail.com',
     phoneNumber: '0941332489',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Vo Thi Ngan',
@@ -127,6 +144,7 @@ export const usersData = [
     email: 'phongtorai9a@gmail.com',
     phoneNumber: '094123589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Nguyen Son Ba',
@@ -134,6 +152,7 @@ export const usersData = [
     email: 'son3a@gmail.com',
     phoneNumber: '0123214589',
     avatar: 'avatar.png',
+    block: true,
   },
   {
     fullName: 'Pham Hong Nghia',
@@ -141,6 +160,7 @@ export const usersData = [
     email: 'thudatdl123@gmail.com',
     phoneNumber: '0941374589',
     avatar: 'avatar.png',
+    block: true,
   },
 ];
 
@@ -185,6 +205,14 @@ export const userGrid = [
     width: '200',
     field: 'phoneNumber',
     textAlign: 'Center',
+  },
+  {
+    headerText: 'Blocked',
+    field: 'block',
+    width: '150',
+    displayAsCheckBox: true,
+    textAlign: 'Center',
+    editType: 'booleanedit',
   },
 ];
 

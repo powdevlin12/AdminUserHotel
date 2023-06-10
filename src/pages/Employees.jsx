@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort, Add } from '@syncfusion/ej2-react-grids';
+import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
 import { Header } from '../components';
 import { userGrid, usersData } from '../data/users';
@@ -37,7 +37,7 @@ const Employees = () => {
         width="auto"
         allowPaging
         allowSorting
-        pageSettings={{ pageCount: 5 }}
+        pageSettings={{ pageCount: 5, pageSize: 8 }}
         editSettings={editing}
         toolbar={toolbarOptions}
         actionBegin={actionBegin}
