@@ -2,9 +2,9 @@ import React from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
 import { Header } from '../components';
-import { userGrid, usersData } from '../data/users';
+import { hotelGrid, hotelsData } from '../data/hotels';
 
-const Employees = () => {
+const Hotel = () => {
   const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
   // delete action
@@ -31,9 +31,9 @@ const Employees = () => {
   };
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Users" />
+      <Header category="Page" title="Hotels" />
       <GridComponent
-        dataSource={usersData}
+        dataSource={hotelsData}
         width="auto"
         allowPaging
         allowSorting
@@ -45,7 +45,7 @@ const Employees = () => {
       >
         <ColumnsDirective>
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          {userGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
+          {hotelGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
         <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
 
@@ -53,4 +53,4 @@ const Employees = () => {
     </div>
   );
 };
-export default Employees;
+export default Hotel;
