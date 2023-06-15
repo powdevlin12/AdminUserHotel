@@ -3,6 +3,7 @@ import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page,
 
 import { Header } from '../components';
 import { userGrid, usersData } from '../data/users';
+import Layout from '../components/Layout';
 
 const Employees = () => {
   const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
@@ -30,27 +31,29 @@ const Employees = () => {
     }
   };
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Users" />
-      <GridComponent
-        dataSource={usersData}
-        width="auto"
-        allowPaging
-        allowSorting
-        pageSettings={{ pageCount: 5, pageSize: 8 }}
-        editSettings={editing}
-        toolbar={toolbarOptions}
-        actionBegin={actionBegin}
-        actionComplete={actionComplete}
-      >
-        <ColumnsDirective>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          {userGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
-        </ColumnsDirective>
-        <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
+    <Layout>
+      <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+        <Header category="Page" title="Users" />
+        <GridComponent
+          dataSource={usersData}
+          width="auto"
+          allowPaging
+          allowSorting
+          pageSettings={{ pageCount: 5, pageSize: 8 }}
+          editSettings={editing}
+          toolbar={toolbarOptions}
+          actionBegin={actionBegin}
+          actionComplete={actionComplete}
+        >
+          <ColumnsDirective>
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+            {userGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
+          </ColumnsDirective>
+          <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
 
-      </GridComponent>
-    </div>
+        </GridComponent>
+      </div>
+    </Layout>
   );
 };
 export default Employees;
