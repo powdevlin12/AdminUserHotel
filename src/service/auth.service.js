@@ -1,4 +1,5 @@
 import { getDataUser, loginUrl } from '../utils/constant/pointApi';
+import { get } from '../utils/localstorage';
 import { axiosInstanceNotToken, axiosToken } from './axios.service';
 
 const loginAPI = (payload) => {
@@ -8,7 +9,11 @@ const loginAPI = (payload) => {
   });
 };
 
-const getDataUserAPI = () => axiosToken.get(getDataUser);
+const getDataUserAPI = (accessToken) => axiosInstanceNotToken.get(getDataUser, {
+  headers: {
+    Authorization: `Bearer ${get('accessToken') || accessToken}`,
+  },
+});
 
 export {
   loginAPI,
