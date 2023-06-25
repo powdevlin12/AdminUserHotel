@@ -10,6 +10,7 @@ import Login from './pages/auth/login';
 
 import { useStateContext } from './contexts/ContextProvider';
 import Hotel from './pages/Hotels';
+import { HotelProvider } from './contexts/HotelProvider';
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -32,7 +33,8 @@ const App = () => {
           <Route path="/orders" element={<Orders />} />
           <Route path="/users" element={<Employees />} />
           <Route path="/customers" element={<Customers />} />
-          <Route path="/hotels" element={<Hotel />} />
+
+          <Route path="/hotels" element={<HotelProvider> <Hotel /> </HotelProvider>} />
 
           {/* apps  */}
           <Route path="/kanban" element={<Kanban />} />

@@ -3,25 +3,25 @@ export const hotelGrid = [
   {
     headerText: 'Name',
     width: '200',
-    field: 'Name',
+    field: 'name',
     textAlign: 'Center',
   },
   {
     headerText: 'Star',
     width: '100',
-    field: 'Star',
+    field: 'star',
     textAlign: 'Center',
   },
   {
     headerText: 'Description',
     width: '200',
-    field: 'Description',
+    field: 'description',
     textAlign: 'Center',
   },
   {
     headerText: 'Address',
     width: '300',
-    field: 'Address',
+    field: 'address',
     textAlign: 'Center',
   },
   {

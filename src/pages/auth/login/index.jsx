@@ -1,10 +1,12 @@
 import './index.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiUser, BiLockAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/AuthProvider';
 
 function Login() {
-  const { isLoading, login: loginFromContext } = useAuthContext();
+  const { isLoading, login: loginFromContext, user: currentUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     username: 'xxadmin22@gmail.com',
@@ -22,6 +24,12 @@ function Login() {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/users');
+    }
+  }, [currentUser]);
 
   return (
     <div className="container">

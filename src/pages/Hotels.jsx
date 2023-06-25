@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
 import { Header } from '../components';
 import { hotelGrid, hotelsData } from '../data/hotels';
 import Layout from '../components/Layout';
+import { useHotelContext } from '../contexts/HotelProvider';
 
 const Hotel = () => {
+  const { hotels, getDataHotels } = useHotelContext();
+  useEffect(() => {
+    getDataHotels();
+  }, []);
+
   const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
   // delete action
@@ -35,7 +41,7 @@ const Hotel = () => {
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Hotels" />
         <GridComponent
-          dataSource={hotelsData}
+          dataSource={hotels}
           width="auto"
           allowPaging
           allowSorting
