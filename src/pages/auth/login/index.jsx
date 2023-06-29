@@ -9,8 +9,8 @@ function Login() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    username: 'xxadmin22@gmail.com',
-    password: 'Def@u1t',
+    username: 'luffschloss@gmail.com',
+    password: 'Luffsch1oss@gmail.com',
   });
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
 import { Header } from '../components';
 import { userGrid, usersData } from '../data/users';
 import Layout from '../components/Layout';
+import { useUserContext } from '../contexts/UserProvider';
 
 const Employees = () => {
   const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
+  const { getDataHotels, users } = useUserContext();
   // delete action
   const actionBegin = (args) => {
     if (args.requestType === 'delete') { // triggers while deleting the record
@@ -30,12 +32,16 @@ const Employees = () => {
       console.log(args.data);
     }
   };
+
+  useEffect(() => {
+    getDataHotels();
+  }, []);
   return (
     <Layout>
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Users" />
         <GridComponent
-          dataSource={usersData}
+          dataSource={users}
           width="auto"
           allowPaging
           allowSorting

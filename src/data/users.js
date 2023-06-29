@@ -164,11 +164,11 @@ export const usersData = [
   },
 ];
 
-const userAvatar = () => (
+const userAvatar = (url) => (
   <div className="flex items-center gap-2">
     <img
       className="rounded-full w-10 h-10"
-      src={avatar2}
+      src={url}
       alt="user avatar"
     />
   </div>
@@ -181,34 +181,41 @@ export const userGrid = [
     width: '100',
     textAlign: 'Center',
     template: userAvatar,
+    field: 'avatar',
   },
   {
-    headerText: 'User',
-    width: '200',
-    field: 'fullName',
+    headerText: 'First Name',
+    width: '150',
+    field: 'firstName',
+    textAlign: 'Center',
+  },
+  {
+    headerText: 'Last Name',
+    width: '150',
+    field: 'lastName',
     textAlign: 'Center',
   },
   {
     headerText: 'Age',
-    width: '100',
+    width: '70',
     field: 'age',
     textAlign: 'Center',
   },
   {
     headerText: 'Email',
-    width: '200',
+    width: '150',
     field: 'email',
     textAlign: 'Center',
   },
   {
     headerText: 'Phone Number',
-    width: '200',
+    width: '180',
     field: 'phoneNumber',
     textAlign: 'Center',
   },
   {
     headerText: 'Blocked',
-    field: 'block',
+    field: 'isBlock',
     width: '150',
     displayAsCheckBox: true,
     textAlign: 'Center',
