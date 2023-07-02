@@ -5,9 +5,13 @@ const getDataUser = '/user/detail';
 const getHotelsUrl = '/hotel';
 // user
 const getUserUrl = '/user';
+const lockUser = 'user/block';
+const unlockUser = 'user/unlock';
 export {
   loginUrl,
   getDataUser,
   getHotelsUrl,
   getUserUrl,
+  lockUser,
+  unlockUser,
 };

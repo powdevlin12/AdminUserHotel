@@ -26,6 +26,10 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const lockAndUnlockUser = async (user) => {
+
+  };
+
   const value = useMemo(() => ({ ...state, getDataHotels }), [state]);
 
   return (

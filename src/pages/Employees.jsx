@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
+import { PlusOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import { Header } from '../components';
-import { userGrid, usersData } from '../data/users';
+import { userGrid } from '../data/users';
 import Layout from '../components/Layout';
 import { useUserContext } from '../contexts/UserProvider';
 

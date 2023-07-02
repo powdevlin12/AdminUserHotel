@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
 
+import { Button, Modal, Space } from 'antd';
+import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Header } from '../components';
 import { hotelGrid, hotelsData } from '../data/hotels';
 import Layout from '../components/Layout';
 import { useHotelContext } from '../contexts/HotelProvider';
+import ModalAddHotel from '../components/Hotel/ModalAddHotel';
 
 const Hotel = () => {
   const { hotels, getDataHotels } = useHotelContext();
@@ -36,10 +39,31 @@ const Hotel = () => {
       console.log(args.data);
     }
   };
+
+  // NOTE: on/off modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Layout>
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Hotels" />
+        <Space size="middle" className="mb-2">
+          <Button type="primary" size="large" onClick={showModal}>
+            Add Hotel
+          </Button>
+        </Space>
         <GridComponent
           dataSource={hotels}
           width="auto"
@@ -58,6 +82,9 @@ const Hotel = () => {
           <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
 
         </GridComponent>
+        <Modal title="ADD HOTEL" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width="70%">
+          <ModalAddHotel />
+        </Modal>
       </div>
     </Layout>
   );
