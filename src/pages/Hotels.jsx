@@ -4,7 +4,7 @@ import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page,
 import { Button, Modal, Space } from 'antd';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { Header } from '../components';
-import { hotelGrid, hotelsData } from '../data/hotels';
+import { hotelGrid } from '../data/hotels';
 import Layout from '../components/Layout';
 import { useHotelContext } from '../contexts/HotelProvider';
 import ModalAddHotel from '../components/Hotel/ModalAddHotel';
@@ -47,8 +47,15 @@ const Hotel = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
+  let grid;
+  const rowSelected = () => {
+    if (grid) {
+      /** Get the selected row indexes */
+      const selectedrowindex = grid.getSelectedRowIndexes();
+      /** Get the selected records. */
+      const selectedrecords = grid.getSelectedRecords();
+      alert(`${selectedrowindex} : ${JSON.stringify(selectedrecords)}`);
+    }
   };
 
   const handleCancel = () => {
@@ -60,7 +67,7 @@ const Hotel = () => {
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Hotels" />
         <Space size="middle" className="mb-2">
-          <Button type="primary" size="large" onClick={showModal}>
+          <Button type="primary" size="large" onClick={showModal} className="bg-sky-500">
             Add Hotel
           </Button>
         </Space>
@@ -74,6 +81,8 @@ const Hotel = () => {
           toolbar={toolbarOptions}
           actionBegin={actionBegin}
           actionComplete={actionComplete}
+          rowSelected={rowSelected}
+          ref={(g) => grid = g}
         >
           <ColumnsDirective>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
@@ -82,7 +91,7 @@ const Hotel = () => {
           <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
 
         </GridComponent>
-        <Modal title="ADD HOTEL" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width="70%">
+        <Modal title="ADD HOTEL" open={isModalOpen} onCancel={handleCancel} width="70%" cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
           <ModalAddHotel />
         </Modal>
       </div>

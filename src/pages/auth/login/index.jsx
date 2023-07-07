@@ -48,7 +48,7 @@ function Login() {
           </div>
         </div>
         <div className="button-container">
-          <button className="login-button" type="submit" onClick={handleSubmit}>Login</button>
+          <button className="login-button bg-sky-600 rounded-md" type="submit" onClick={handleSubmit}>Login</button>
         </div>
         <p className="text">
           No account ? <a href="https://www.w3schools.com">Create one!</a>

@@ -9,6 +9,15 @@ const hotelReducer = (state, action) => {
     case 'GET_HOTEL_FALSE': {
       return { ...state, isLoading: false, error: action.payload };
     }
+    case 'POST_HOTEL_START': {
+      return { ...state, isLoading: true };
+    }
+    case 'POST_HOTEL_SUCCESS': {
+      return { ...state, isLoading: false };
+    }
+    case 'POST_HOTEL_FALSE': {
+      return { ...state, isLoading: false, error: action.payload };
+    }
     default: {
       return state;
     }
