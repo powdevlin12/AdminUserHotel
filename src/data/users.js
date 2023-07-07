@@ -164,18 +164,20 @@ export const usersData = [
   },
 ];
 
-const userAvatar = (url) => (
-  <div className="flex items-center gap-2">
-    <img
-      className="rounded-full w-10 h-10"
-      src={url}
-      alt="user avatar"
-    />
-  </div>
-);
+const userAvatar = (props) => {
+  console.log(props);
+  return (
+    <div className="flex items-center gap-2">
+      <img
+        className="rounded-full w-10 h-10"
+        src={props?.avatar}
+        alt="user avatar"
+      />
+    </div>
+  );
+};
 
 export const userGrid = [
-  { type: 'checkbox', width: '50' },
   {
     headerText: 'Avatar',
     width: '100',

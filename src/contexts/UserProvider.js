@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
+import Swal from 'sweetalert2';
 import userReducer from '../reducer/user.reducer';
-import { getDataUserAPI } from '../service/user.service';
+import { blockUserAPI, getDataUserAPI, unblockUserAPI } from '../service/user.service';
 
 const { createContext, useContext, useReducer } = require('react');
 
@@ -25,11 +26,63 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const lockAndUnlockUser = async (user) => {
-
+  const lockUser = async (id) => {
+    dispatch({ type: 'BLOCK_USER_START' });
+    try {
+      const response = await blockUserAPI(id);
+      console.log('🚀 ~ file: UserProvider.js:33 ~ lockUser ~ response:', response);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      getDataUsers();
+      dispatch({ type: 'BLOCK_USER_SUCCESS' });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: 'BLOCK_USER_FALSE' });
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error',
+        text: error.response.data.message,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
   };
 
-  const value = useMemo(() => ({ ...state, getDataUsers }), [state]);
+  const unlockUser = async (id) => {
+    dispatch({ type: 'BLOCK_USER_START' });
+    try {
+      const response = await unblockUserAPI(id);
+      console.log('🚀 ~ file: UserProvider.js:33 ~ lockUser ~ response:', response);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      getDataUsers();
+      dispatch({ type: 'BLOCK_USER_SUCCESS' });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: 'BLOCK_USER_FALSE' });
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error',
+        text: error.response.data.message,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
+  };
+
+  const value = useMemo(() => ({ ...state, getDataUsers, lockUser, unlockUser }), [state]);
 
   return (
     <UserContext.Provider value={value}>

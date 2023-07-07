@@ -10,6 +10,15 @@ const userReducer = (state, action) => {
     case 'GET_USER_FALSE': {
       return { ...state, isLoading: false, error: action.payload };
     }
+    case 'BLOCK_USER_START': {
+      return { ...state, isLoading: true };
+    }
+    case 'BLOCK_USER_SUCCESS': {
+      return { ...state, isLoading: false };
+    }
+    case 'BLOCK_USER_FALSE': {
+      return { ...state, isLoading: false, error: action.payload };
+    }
     default: {
       return state;
     }

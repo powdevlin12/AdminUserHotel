@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page, Toolbar, Edit, Sort } from '@syncfusion/ej2-react-grids';
-
-import { PlusOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import Swal from 'sweetalert2';
 import { Header } from '../components';
 import { userGrid } from '../data/users';
 import Layout from '../components/Layout';
@@ -12,7 +10,7 @@ import Loading from '../components/Loading';
 const Employees = () => {
   const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
-  const { getDataUsers, users, isLoading } = useUserContext();
+  const { getDataUsers, users, lockUser, unlockUser, isLoading } = useUserContext();
   // delete action
   const actionBegin = (args) => {
     if (args.requestType === 'delete') { // triggers while deleting the record
@@ -36,6 +34,43 @@ const Employees = () => {
     }
   };
 
+  let grid;
+  const rowSelected = () => {
+    if (grid) {
+      const selectedrecords = grid.getSelectedRecords();
+      console.log(selectedrecords);
+      if (!selectedrecords[0].isBlock) {
+        Swal.fire({
+          title: 'Confirm block',
+          text: 'Are you sure you want to block this person?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, do it!',
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            lockUser(selectedrecords[0].id);
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Confirm unlock',
+          text: 'Are you sure you want to unlock this person?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, do it!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            unlockUser(selectedrecords[0].id);
+          }
+        });
+      }
+    }
+  };
+
   useEffect(() => {
     getDataUsers();
   }, []);
@@ -54,6 +89,8 @@ const Employees = () => {
           toolbar={toolbarOptions}
           actionBegin={actionBegin}
           actionComplete={actionComplete}
+          rowSelected={rowSelected}
+          ref={(g) => grid = g}
         >
           <ColumnsDirective>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
