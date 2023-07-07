@@ -14,11 +14,10 @@ const initState = {
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, initState);
 
-  const getDataHotels = async () => {
+  const getDataUsers = async () => {
+    dispatch({ type: 'GET_USER_START' });
     try {
-      dispatch({ type: 'GET_USER_PENDING' });
       const response = await getDataUserAPI();
-      console.log('🚀 ~ file: UserProvider.js:21 ~ getDataHotels ~ response:', response);
       dispatch({ type: 'GET_USER_SUCCESS', payload: response.data });
     } catch (error) {
       console.log(error);
@@ -30,7 +29,7 @@ export const UserProvider = ({ children }) => {
 
   };
 
-  const value = useMemo(() => ({ ...state, getDataHotels }), [state]);
+  const value = useMemo(() => ({ ...state, getDataUsers }), [state]);
 
   return (
     <UserContext.Provider value={value}>

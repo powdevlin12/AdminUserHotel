@@ -8,9 +8,10 @@ import { hotelGrid } from '../data/hotels';
 import Layout from '../components/Layout';
 import { useHotelContext } from '../contexts/HotelProvider';
 import ModalAddHotel from '../components/Hotel/ModalAddHotel';
+import Loading from '../components/Loading';
 
 const Hotel = () => {
-  const { hotels, getDataHotels } = useHotelContext();
+  const { hotels, getDataHotels, isLoading } = useHotelContext();
   useEffect(() => {
     getDataHotels();
   }, []);
@@ -64,6 +65,7 @@ const Hotel = () => {
 
   return (
     <Layout>
+      {isLoading && <Loading isLoading={isLoading} />}
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Hotels" />
         <Space size="middle" className="mb-2">

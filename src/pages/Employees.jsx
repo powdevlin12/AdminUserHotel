@@ -7,11 +7,13 @@ import { Header } from '../components';
 import { userGrid } from '../data/users';
 import Layout from '../components/Layout';
 import { useUserContext } from '../contexts/UserProvider';
+import Loading from '../components/Loading';
 
 const Employees = () => {
-  const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const toolbarOptions = [];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
-  const { getDataHotels, users } = useUserContext();
+  const { getDataUsers, users, isLoading } = useUserContext();
+  console.log('🚀 ~ file: Employees.jsx:16 ~ Employees ~ isLoading:', isLoading);
   // delete action
   const actionBegin = (args) => {
     if (args.requestType === 'delete') { // triggers while deleting the record
@@ -36,7 +38,7 @@ const Employees = () => {
   };
 
   useEffect(() => {
-    getDataHotels();
+    getDataUsers();
   }, []);
   return (
     <Layout>
@@ -57,10 +59,11 @@ const Employees = () => {
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {userGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
           </ColumnsDirective>
-          <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
+          {/* <Inject services={[Search, Toolbar]} /> */}
 
         </GridComponent>
       </div>
+      {isLoading && <Loading isLoading={isLoading} />}
     </Layout>
   );
 };

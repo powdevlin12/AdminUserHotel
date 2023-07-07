@@ -16,7 +16,7 @@ export const HotelProvider = ({ children }) => {
 
   const getDataHotels = async () => {
     try {
-      dispatch({ type: 'GET_HOTEL_PENDING' });
+      dispatch({ type: 'GET_HOTEL_START' });
       const response = await getDataHotelsAPI();
       dispatch({ type: 'GET_HOTEL_SUCCESS', payload: response.data });
     } catch (error) {

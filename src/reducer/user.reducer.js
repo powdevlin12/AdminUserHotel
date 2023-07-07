@@ -1,6 +1,7 @@
 const userReducer = (state, action) => {
   switch (action.type) {
     case 'GET_USER_START': {
+      console.log('GET_USER_START', state);
       return { ...state, isLoading: true };
     }
     case 'GET_USER_SUCCESS': {

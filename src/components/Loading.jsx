@@ -1,5 +1,5 @@
 import React from 'react';
-import { RotateLoader, ScaleLoader } from 'react-spinners';
+import { RotateLoader } from 'react-spinners';
 
 const Loading = ({ isLoading }) => (
   <div className="flex justify-center items-center absolute inset-0 z-20" style={{ backgroundColor: '#757577a8' }}>
