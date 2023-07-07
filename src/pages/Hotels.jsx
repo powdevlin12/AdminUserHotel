@@ -3,6 +3,7 @@ import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page,
 
 import { Button, Modal, Space } from 'antd';
 import { DownloadOutlined, PlusOutlined } from '@ant-design/icons';
+import Swal from 'sweetalert2';
 import { Header } from '../components';
 import { hotelGrid } from '../data/hotels';
 import Layout from '../components/Layout';
@@ -11,7 +12,7 @@ import ModalAddHotel from '../components/Hotel/ModalAddHotel';
 import Loading from '../components/Loading';
 
 const Hotel = () => {
-  const { hotels, getDataHotels, isLoading } = useHotelContext();
+  const { hotels, getDataHotels, isLoading, postApprovalHotel } = useHotelContext();
   useEffect(() => {
     getDataHotels();
   }, []);
@@ -51,14 +52,33 @@ const Hotel = () => {
   let grid;
   const rowSelected = () => {
     if (grid) {
-      /** Get the selected row indexes */
-      const selectedrowindex = grid.getSelectedRowIndexes();
-      /** Get the selected records. */
       const selectedrecords = grid.getSelectedRecords();
-      alert(`${selectedrowindex} : ${JSON.stringify(selectedrecords)}`);
+      console.log(selectedrecords);
+      if (!selectedrecords[0].approval) {
+        Swal.fire({
+          title: 'Confirm Approval',
+          text: 'Are you sure you want to approval this hotel?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes',
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            postApprovalHotel(selectedrecords[0].id);
+          }
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'This hotel has been approved before',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
     }
   };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };

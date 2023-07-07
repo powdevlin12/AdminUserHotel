@@ -1,5 +1,4 @@
 export const hotelGrid = [
-  { type: 'checkbox', width: '50' },
   {
     headerText: 'Name',
     width: '200',
@@ -25,8 +24,8 @@ export const hotelGrid = [
     textAlign: 'Center',
   },
   {
-    headerText: 'Approve',
-    field: 'approve',
+    headerText: 'Approval',
+    field: 'approval',
     width: '150',
     displayAsCheckBox: true,
     textAlign: 'Center',
