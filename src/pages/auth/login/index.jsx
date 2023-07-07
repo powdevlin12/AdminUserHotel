@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BiUser, BiLockAlt } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/AuthProvider';
+import Loading from '../../../components/Loading';
 
 function Login() {
   const { isLoading, login: loginFromContext, user: currentUser } = useAuthContext();
@@ -33,6 +34,7 @@ function Login() {
 
   return (
     <div className="container">
+      {isLoading && <Loading isLoading={isLoading} />}
       <form className="main">
         <p className="main-text">System Admin Hotel</p>
         <div className="main-input-container">
@@ -56,7 +58,6 @@ function Login() {
         <h6 className="copyright">@Created by Group 4</h6>
       </form>
     </div>
-
   );
 }
 
