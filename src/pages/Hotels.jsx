@@ -10,6 +10,7 @@ import Layout from '../components/Layout';
 import { useHotelContext } from '../contexts/HotelProvider';
 import ModalAddHotel from '../components/Hotel/ModalAddHotel';
 import Loading from '../components/Loading';
+import { btnAccept, btnCancel } from '../utils/constant/color';
 
 const Hotel = () => {
   const { hotels, getDataHotels, isLoading, postApprovalHotel } = useHotelContext();
@@ -17,7 +18,7 @@ const Hotel = () => {
     getDataHotels();
   }, []);
 
-  const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const toolbarOptions = ['Search'];
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
   // delete action
   const actionBegin = (args) => {
@@ -60,8 +61,8 @@ const Hotel = () => {
           text: 'Are you sure you want to approval this hotel?',
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
+          confirmButtonColor: btnAccept,
+          cancelButtonColor: btnCancel,
           confirmButtonText: 'Yes',
         }).then(async (result) => {
           if (result.isConfirmed) {
@@ -88,11 +89,7 @@ const Hotel = () => {
       {isLoading && <Loading isLoading={isLoading} />}
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Page" title="Hotels" />
-        <Space size="middle" className="mb-2">
-          <Button type="primary" size="large" onClick={showModal} className="bg-sky-500">
-            Add Hotel
-          </Button>
-        </Space>
+
         <GridComponent
           dataSource={hotels}
           width="auto"
@@ -110,7 +107,7 @@ const Hotel = () => {
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {hotelGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
           </ColumnsDirective>
-          <Inject services={[Search, Page, Toolbar, Edit, Sort]} />
+          <Inject services={[Search]} />
 
         </GridComponent>
         <Modal title="ADD HOTEL" open={isModalOpen} onCancel={handleCancel} width="70%" cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>

@@ -29,7 +29,6 @@ export const hotelGrid = [
     width: '150',
     displayAsCheckBox: true,
     textAlign: 'Center',
-    editType: 'booleanedit',
   },
 ];
 

@@ -52,9 +52,9 @@ function Login() {
         <div className="button-container">
           <button className="login-button bg-sky-600 rounded-md" type="submit" onClick={handleSubmit}>Login</button>
         </div>
-        <p className="text">
+        {/* <p className="text">
           No account ? <a href="https://www.w3schools.com">Create one!</a>
-        </p>
+        </p> */}
         <h6 className="copyright">@Created by Group 4</h6>
       </form>
     </div>

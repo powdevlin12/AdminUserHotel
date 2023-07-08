@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import authReducer from '../reducer/auth.reducer';
 import { getDataUserAPI, loginAPI } from '../service/auth.service';
 import { GET_USER_FALSE, GET_USER_PENDING, GET_USER_SUCCESS, LOGIN_FALSE, LOGIN_PENDING, LOGIN_SUCCESS } from '../utils/constant/typeReducer';
-import { get } from '../utils/localstorage';
+import { get, save } from '../utils/localstorage';
 
 const { createContext, useContext, useReducer } = require('react');
 

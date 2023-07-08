@@ -24,7 +24,9 @@ const authReducer = (state, action) => {
     case GET_USER_FALSE: {
       return { ...state, isLoading: false, error: action.payload };
     }
-
+    case 'LOGOUT': {
+      return { ...state, accessToken: '' };
+    }
     default: {
       return state;
     }

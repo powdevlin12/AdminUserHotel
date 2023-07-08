@@ -1,5 +1,4 @@
 import React from 'react';
-import avatar2 from './avatar2.jpg';
 
 export const usersData = [
   {
@@ -164,18 +163,15 @@ export const usersData = [
   },
 ];
 
-const userAvatar = (props) => {
-  console.log(props);
-  return (
-    <div className="flex items-center gap-2">
-      <img
-        className="rounded-full w-10 h-10"
-        src={props?.avatar}
-        alt="user avatar"
-      />
-    </div>
-  );
-};
+const userAvatar = (props) => (
+  <div className="flex items-center gap-2">
+    <img
+      className="rounded-full w-10 h-10"
+      src={props?.avatar}
+      alt="user avatar"
+    />
+  </div>
+);
 
 export const userGrid = [
   {
@@ -221,7 +217,6 @@ export const userGrid = [
     width: '150',
     displayAsCheckBox: true,
     textAlign: 'Center',
-    editType: 'booleanedit',
   },
 ];
 

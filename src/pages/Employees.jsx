@@ -6,9 +6,11 @@ import { userGrid } from '../data/users';
 import Layout from '../components/Layout';
 import { useUserContext } from '../contexts/UserProvider';
 import Loading from '../components/Loading';
+import { btnAccept, btnCancel } from '../utils/constant/color';
 
 const Employees = () => {
-  const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+  const toolbarOptions = ['Search', 'Cancel'];
+
   const editing = { allowDeleting: true, allowEditing: true, allowAdding: true };
   const { getDataUsers, users, lockUser, unlockUser, isLoading } = useUserContext();
   // delete action
@@ -45,9 +47,9 @@ const Employees = () => {
           text: 'Are you sure you want to block this person?',
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, do it!',
+          confirmButtonColor: btnAccept,
+          cancelButtonColor: btnCancel,
+          confirmButtonText: 'Yes',
         }).then(async (result) => {
           if (result.isConfirmed) {
             lockUser(selectedrecords[0].id);
@@ -59,9 +61,9 @@ const Employees = () => {
           text: 'Are you sure you want to unlock this person?',
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, do it!',
+          confirmButtonColor: btnAccept,
+          cancelButtonColor: btnCancel,
+          confirmButtonText: 'Yes',
         }).then((result) => {
           if (result.isConfirmed) {
             unlockUser(selectedrecords[0].id);

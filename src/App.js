@@ -12,46 +12,25 @@ import { useStateContext } from './contexts/ContextProvider';
 import Hotel from './pages/Hotels';
 import { HotelProvider } from './contexts/HotelProvider';
 import PrivateRoute from './components/PrivateRoute';
+import { get } from './utils/localstorage';
+import { useAuthContext } from './contexts/AuthProvider';
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
 
         <Routes>
+          <Route path="/" element={(<PrivateRoute><Employees /></PrivateRoute>)} />
           {/* auth */}
           <Route path="/login" element={(<Login />)} />
 
-          {/* dashboard  */}
-          <Route path="/" element={(<Ecommerce />)} />
-          <Route path="/ecommerce" element={(<Ecommerce />)} />
-
-          {/* pages  */}
-          <Route path="/orders" element={<Orders />} />
           <Route path="/users" element={<PrivateRoute><Employees /></PrivateRoute>} />
-          <Route path="/customers" element={<Customers />} />
 
           <Route path="/hotels" element={<HotelProvider><PrivateRoute> <Hotel /> </PrivateRoute></HotelProvider>} />
-
-          {/* apps  */}
-          <Route path="/kanban" element={<Kanban />} />
-          <Route path="/editor" element={<Editor />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/color-picker" element={<ColorPicker />} />
-
-          {/* charts  */}
-          <Route path="/line" element={<Line />} />
-          <Route path="/area" element={<Area />} />
-          <Route path="/bar" element={<Bar />} />
-          <Route path="/pie" element={<Pie />} />
-          <Route path="/financial" element={<Financial />} />
-          <Route path="/color-mapping" element={<ColorMapping />} />
-          <Route path="/pyramid" element={<Pyramid />} />
-          <Route path="/stacked" element={<Stacked />} />
 
         </Routes>
 
